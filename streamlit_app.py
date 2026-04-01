@@ -32,9 +32,12 @@ if st.button("Scrape Tomorrow's Tips", type="primary"):
         st.code(copy_text, language="html")
 
         # Send email
-        app_password = st.secrets.get("GMAIL_APP_PASSWORD", "")
-        email_from = st.secrets.get("EMAIL_FROM", "")
-        email_to = st.secrets.get("EMAIL_TO", "")
+        try:
+            app_password = st.secrets["GMAIL_APP_PASSWORD"]
+            email_from = st.secrets["EMAIL_FROM"]
+            email_to = st.secrets["EMAIL_TO"]
+        except (KeyError, FileNotFoundError):
+            app_password = email_from = email_to = ""
 
         if app_password and email_from and email_to:
             with st.spinner("Sending email..."):
