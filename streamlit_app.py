@@ -18,7 +18,7 @@ if st.button("Scrape Tomorrow's Tips", type="primary"):
         # Build HTML for display and WordPress copy-paste
         html_lines = []
         for meeting in tips:
-            html_lines.append(f"<strong>{meeting['meeting']}</strong>")
+            html_lines.append(f"<strong>{meeting['meeting'].upper()}</strong>")
             for race in meeting["races"]:
                 html_lines.append(f"{race['time']} {race['horse']} {race['odds']}")
             html_lines.append("")
@@ -49,7 +49,7 @@ if st.button("Scrape Tomorrow's Tips", type="primary"):
                 # Plain text version
                 plain_lines = []
                 for meeting in tips:
-                    plain_lines.append(meeting["meeting"])
+                    plain_lines.append(meeting["meeting"].upper())
                     for race in meeting["races"]:
                         plain_lines.append(f"{race['time']} {race['horse']} {race['odds']}")
                     plain_lines.append("")

@@ -89,7 +89,7 @@ def format_output(meetings):
     """Format meetings data as plain text output."""
     lines = []
     for meeting in meetings:
-        lines.append(meeting["meeting"])
+        lines.append(meeting["meeting"].upper())
         for race in meeting["races"]:
             lines.append(f"{race['time']} {race['horse']} {race['odds']}")
         lines.append("")  # blank line between meetings
